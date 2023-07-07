@@ -68,6 +68,8 @@ fun BookingScreen() {
             ) {
                 SpaceHorizantal24dp()
                 Column(Modifier.fillMaxHeight()) {
+
+
                     combineImagesHorizontally(R.drawable.seat, R.drawable.seat, 4.dp, 30f)
                     combineImagesHorizontally(R.drawable.seat, R.drawable.seat, 4.dp, 28f)
                     combineImagesHorizontally(R.drawable.seat, R.drawable.seat, 4.dp, 26f)
@@ -108,7 +110,6 @@ fun BookingScreen() {
         }
 
         Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.Center) {
-
 
 
             val texts = listOf(

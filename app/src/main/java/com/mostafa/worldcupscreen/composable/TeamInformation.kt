@@ -7,25 +7,32 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.horizontalScroll
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxScope
 import androidx.compose.foundation.layout.Column
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.RowScope
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Button
 import androidx.compose.material.ButtonDefaults
+import androidx.compose.material.Icon
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
@@ -44,9 +51,13 @@ import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.mostafa.worldcupscreen.FilmData
+import com.mostafa.worldcupscreen.R
 
 
 @Composable
@@ -173,22 +184,59 @@ fun Chip(text: String) {
 }
 
 @Composable
-fun ImageItem(image: Int) {
-    val painter: Painter = painterResource(id = image)
+fun ImageItem(dataFilm: FilmData) {
+    val painter: Painter = painterResource(id = dataFilm.image)
 
-    Box(
-        modifier = Modifier
-            .padding(4.dp)
-            .size(width = 240.dp, height = 320.dp)
-            .clip(RoundedCornerShape(16.dp))
-    ) {
-        Image(
-            painter = painter,
-            contentDescription = null,
-            modifier = Modifier.fillMaxSize(),
-            contentScale = ContentScale.FillBounds
+    Column(Modifier.fillMaxHeight().fillMaxWidth(1f)) {
+        Box(
+            modifier = Modifier
+                .padding(4.dp)
+                .size(width = 240.dp, height = 380.dp)
+                .clip(RoundedCornerShape(16.dp))
+        ) {
+            Image(
+                painter = painter,
+                contentDescription = null,
+                modifier = Modifier.fillMaxSize(),
+                contentScale = ContentScale.FillBounds
+            )
+        }
+        Spacer(modifier = Modifier.height(16.dp))
+
+        Row(verticalAlignment = Alignment.CenterVertically) {
+            Icon(
+                painter = painterResource(R.drawable.ic_timer_24),
+                contentDescription = "Vector",
+                modifier = Modifier.padding(end = 2.dp)
+            )
+            Text(text = "2h 23m")
+        }
+
+        Spacer(modifier = Modifier.height(16.dp))
+
+        Text(
+            text = dataFilm.title,
+            fontSize = 32.sp,
+            textAlign = TextAlign.Start,
+            overflow = TextOverflow.Ellipsis,
+            maxLines = 2,
+            modifier = Modifier.padding(horizontal = 16.dp)
+                .widthIn(max = 240.dp) // Limit the width of the text to match the image width
         )
+        Spacer(modifier = Modifier.height(16.dp))
+
+        Row(
+            Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.Center,
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Chip(text = dataFilm.genre1)
+            Spacer(modifier = Modifier.width(4.dp))
+            Chip(text = dataFilm.genre2)
+        }
     }
+
+
 }
 
 @Composable
@@ -282,7 +330,10 @@ fun TwoVerticalTextsWithBorder(
     val roundedCornerShape: Shape = RoundedCornerShape(borderRadius)
     val borderStroke = BorderStroke(borderStrokeWidth, borderColor)
 
-    Row(Modifier.padding(vertical = 8.dp).horizontalScroll(rememberScrollState()),verticalAlignment = Alignment.CenterVertically) {
+    Row(
+        Modifier
+            .padding(vertical = 8.dp)
+            .horizontalScroll(rememberScrollState()),verticalAlignment = Alignment.CenterVertically) {
 
         texts.forEach { (text1, text2) ->
             SpaceHorizantal8dp()
