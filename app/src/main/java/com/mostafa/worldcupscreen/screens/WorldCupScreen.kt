@@ -9,9 +9,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.mostafa.worldcupscreen.R
 import com.mostafa.worldcupscreen.composable.*
 
 @Composable
@@ -21,16 +23,16 @@ fun WorldCupScreen() {
             .fillMaxSize()
             .padding(horizontal = 16.dp, vertical = 16.dp)
     ) {
-            Text(text = "LiveMatch", modifier = Modifier.padding(bottom = 16.dp), fontSize = 24.sp)
+        Text(text = "LiveMatch", modifier = Modifier.padding(bottom = 16.dp), fontSize = 24.sp)
         Card(
             modifier = Modifier.fillMaxWidth(),
             backgroundColor = Color(0xFF222232),
             shape = RoundedCornerShape(16.dp)
         ) {
-            
+
 
             Column {
-                SpaceVertical48dp()
+                SpaceVertical32dp()
                 Row(
                     modifier = Modifier
                         .fillMaxWidth()
@@ -39,17 +41,17 @@ fun WorldCupScreen() {
 
                 ) {
                     TeamPlayingNow(
-                        team1 = com.mostafa.worldcupscreen.R.drawable.ic_launcher_background,
-                        team2 = com.mostafa.worldcupscreen.R.drawable.ic_launcher_background,
+                        team1 = R.drawable.man,
+                        team2 = R.drawable.barshal,
                         result = "2 - 2"
                     )
                 }
 
-                SpaceVertical48dp()
+                SpaceVertical32dp()
             }
 
         }
-        SpaceVertical48dp()
+        SpaceVertical32dp()
 
         Row(
             modifier = Modifier
@@ -58,7 +60,7 @@ fun WorldCupScreen() {
         ) {
             Box(modifier = Modifier.fillMaxWidth()) {
                 Text(
-                    text = "Match Schedule", modifier = Modifier
+                    text = stringResource(R.string.machsshedule), modifier = Modifier
                         .align(Alignment.CenterStart),
                     fontSize = 20.sp
                 )
@@ -94,7 +96,7 @@ fun WorldCupScreen() {
 
                     LeftTeamInformation(
                         name = "Chalsea",
-                        image = com.mostafa.worldcupscreen.R.drawable.ic_launcher_background
+                        image = R.drawable.tottenham_hotspur
                     )
                 }
 
@@ -113,8 +115,8 @@ fun WorldCupScreen() {
                         .align(Alignment.CenterVertically)
                 ) {
                     RightTeamInformation(
-                        name = "USA",
-                        image = com.mostafa.worldcupscreen.R.drawable.ic_launcher_background
+                        name = "Leicester",
+                        image = R.drawable.arsenal
                     )
                 }
 
@@ -145,7 +147,7 @@ fun WorldCupScreen() {
 
                     LeftTeamInformation(
                         name = "mexico",
-                        image = com.mostafa.worldcupscreen.R.drawable.ic_launcher_background
+                        image = R.drawable.ic_launcher_background
                     )
                 }
 
@@ -166,7 +168,7 @@ fun WorldCupScreen() {
                 ) {
                     RightTeamInformation(
                         name = "Qater",
-                        image = com.mostafa.worldcupscreen.R.drawable.ic_launcher_background
+                        image = R.drawable.ic_launcher_background
                     )
                 }
 
@@ -194,7 +196,7 @@ fun WorldCupScreen() {
 
                     LeftTeamInformation(
                         name = "Iraq",
-                        image = com.mostafa.worldcupscreen.R.drawable.ic_launcher_background
+                        image = R.drawable.ic_launcher_background
                     )
                 }
 
@@ -212,8 +214,8 @@ fun WorldCupScreen() {
                         .align(Alignment.CenterVertically)
                 ) {
                     RightTeamInformation(
-                        name = "Egypt",
-                        image = com.mostafa.worldcupscreen.R.drawable.ic_launcher_background
+                        name = "Iran",
+                        image = R.drawable.ic_launcher_background
                     )
                 }
 
@@ -243,7 +245,7 @@ fun WorldCupScreen() {
 
                     LeftTeamInformation(
                         name = "Iraq",
-                        image = com.mostafa.worldcupscreen.R.drawable.ic_launcher_background
+                        image = R.drawable.ic_launcher_background
                     )
                 }
 
@@ -262,7 +264,7 @@ fun WorldCupScreen() {
                 ) {
                     RightTeamInformation(
                         name = "Egypt",
-                        image = com.mostafa.worldcupscreen.R.drawable.ic_launcher_background
+                        image = R.drawable.ic_launcher_background
                     )
                 }
 
@@ -293,7 +295,7 @@ fun WorldCupScreen() {
 
                     LeftTeamInformation(
                         name = "Iraq",
-                        image = com.mostafa.worldcupscreen.R.drawable.ic_launcher_background
+                        image = R.drawable.ic_launcher_background
                     )
                 }
 
@@ -312,7 +314,7 @@ fun WorldCupScreen() {
                 ) {
                     RightTeamInformation(
                         name = "Egypt",
-                        image = com.mostafa.worldcupscreen.R.drawable.ic_launcher_background
+                        image = R.drawable.ic_launcher_background
                     )
                 }
 
@@ -329,6 +331,6 @@ fun WorldCupScreen() {
 
 @Preview(showBackground = true)
 @Composable
-fun PreviewWorldCupScreen() {
+private fun Preview1() {
     WorldCupScreen()
 }

@@ -1,0 +1,153 @@
+package com.mostafa.worldcupscreen.screens
+
+import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.Button
+import androidx.compose.material.ButtonDefaults
+import androidx.compose.material.Icon
+import androidx.compose.material.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Alignment.Companion.CenterHorizontally
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import com.mostafa.worldcupscreen.R
+import com.mostafa.worldcupscreen.composable.Chip
+import com.mostafa.worldcupscreen.composable.ImageItem
+import com.mostafa.worldcupscreen.composable.SpaceHorizantal24dp
+import com.mostafa.worldcupscreen.composable.SpaceHorizantal4dp
+import com.mostafa.worldcupscreen.composable.SpaceVertical16dp
+import com.mostafa.worldcupscreen.ui.theme.Orange
+
+
+@Composable
+fun HomeScreen() {
+
+    val imageList = listOf(
+        R.drawable.ic_launcher_background,
+        R.drawable.ic_launcher_background,
+        R.drawable.ic_launcher_background,
+
+    )
+
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(horizontal = 16.dp, vertical = 16.dp)
+    ) {
+
+        Row(
+            Modifier
+                .fillMaxWidth()
+                .align(CenterHorizontally)
+                .padding(horizontal = 24.dp, vertical = 32.dp)
+
+        ) {
+            Button(
+                onClick = { /* Handle button 1 click */ },
+                elevation = ButtonDefaults.elevation(
+                    defaultElevation = 10.dp,
+                    pressedElevation = 15.dp,
+                    disabledElevation = 0.dp,
+
+                    ),
+                modifier = Modifier.padding(8.dp),
+                colors = ButtonDefaults.buttonColors(backgroundColor = Orange),
+                shape = RoundedCornerShape(16.dp),
+
+                ) {
+                Text(text = "Now Showing", color = Color.White)
+            }
+
+
+            SpaceHorizantal4dp()
+
+            Button(
+                onClick = { /* Handle button 2 click */ },
+                modifier = Modifier.padding(8.dp),
+                border = BorderStroke(1.dp, Color.White),
+                colors = ButtonDefaults.outlinedButtonColors(contentColor = Color.Red),
+                shape = RoundedCornerShape(16.dp),
+
+                ) {
+                Text(text = "Coming Soon")
+            }
+
+
+        }
+        Column(Modifier.fillMaxWidth(), horizontalAlignment = CenterHorizontally) {
+
+
+            Box(modifier = Modifier.fillMaxWidth()) {
+                LazyRow(
+                    modifier = Modifier.fillMaxWidth(),
+                    contentPadding = PaddingValues(horizontal = 16.dp)
+                ) {
+                    items(imageList) { image ->
+                        ImageItem(image = image)
+                        SpaceHorizantal24dp()
+                    }
+                }
+            }
+            SpaceVertical16dp()
+
+            Row(verticalAlignment = Alignment.CenterVertically) {
+
+                Icon(
+                    painter = painterResource(R.drawable.ic_timer_24),
+                    contentDescription = "Vector",
+                    modifier = Modifier.padding(end = 2.dp)
+                )
+                Text(text = "2h 23m")
+
+            }
+            SpaceVertical16dp()
+
+            Text(
+                text = "Fantatic Bantastic: The Doctor Mostafa Want you hahaha",
+                fontSize = 32.sp,
+                textAlign = TextAlign.Center
+            )
+            SpaceVertical16dp()
+
+            Row(
+                Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.Center,
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Chip(text = "Action")
+                SpaceHorizantal4dp()
+                Chip(text = "Comedy")
+
+            }
+
+
+        }
+
+
+    }
+
+
+}
+
+
+@Preview(showBackground = true)
+@Composable
+fun Preview() {
+    HomeScreen()
+}

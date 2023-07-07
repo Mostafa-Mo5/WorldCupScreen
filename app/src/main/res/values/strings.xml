@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">WorldCupScreen</string>
+    <string name="machsshedule">Match Schedule</string>
 </resources>
