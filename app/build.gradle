@@ -8,7 +8,15 @@ plugins {
 android {
     namespace 'com.mostafa.worldcupscreen'
     compileSdk 33
-
+    kotlin {
+        jvmToolchain {
+            languageVersion.set(JavaLanguageVersion.of(18))
+        }
+        // Or shorter:
+        jvmToolchain(18)
+        // For example:
+        jvmToolchain(17)
+    }
     defaultConfig {
         applicationId "com.mostafa.worldcupscreen"
         minSdk 26
@@ -20,6 +28,11 @@ android {
         vectorDrawables {
             useSupportLibrary true
         }
+    }
+
+    compileOptions {
+        sourceCompatibility = 18
+        targetCompatibility = 18
     }
 
     buildTypes {
