@@ -30,10 +30,6 @@ android {
         }
     }
 
-    compileOptions {
-        sourceCompatibility = 18
-        targetCompatibility = 18
-    }
 
     buildTypes {
         release {
