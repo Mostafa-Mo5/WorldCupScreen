@@ -28,9 +28,11 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
+
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_7
-        targetCompatibility JavaVersion.VERSION_1_7
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
     buildFeatures {
         compose = true
@@ -43,6 +45,22 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+    // Configure the JVM toolchain
+    javaToolchains {
+        var javaEight = register("javaEight") {
+            vendor = "Oracle"
+            version = JavaVersion.VERSION_1_8
+            javaHome = System.getenv("JAVA_HOME") ?: "${System.properties['java.home']}"
+        }
+    }
+
+    // Set the target compatibility for Java compilation tasks
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
+    }
+
+
     packagingOptions {
         resources {
             excludes += '/META-INF/{AL2.0,LGPL2.1}'

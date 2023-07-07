@@ -1,4 +1,12 @@
-
+buildscript {
+    repositories {
+        google()
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:7.0.4' // Update to a more recent version
+    }
+}
 plugins {
     id 'com.google.dagger.hilt.android' version '2.44' apply false
     id 'com.android.application' version '8.0.0' apply false
