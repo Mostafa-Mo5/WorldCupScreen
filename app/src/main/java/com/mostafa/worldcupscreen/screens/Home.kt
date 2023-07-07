@@ -45,8 +45,7 @@ fun HomeScreen() {
     val filmList = listOf(
         FilmData(
             R.drawable.cover,
-            "Fate/Strange Fake: Whispers of Dawn "
-            ,
+            "Fate/Strange Fake: Whispers of Dawn ",
             "Action",
             "Comedy"
         ),
