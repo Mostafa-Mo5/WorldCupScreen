@@ -29,7 +29,7 @@ class MainActivity : ComponentActivity() {
                     val navController =  rememberNavController()
                    NavHost(navController = navController, startDestination = "firstScreen" ){
                        composable("firstScreen"){ HomeScreen(navController)}
-                       composable("secondScreen"){ FilmScreen() }
+                       composable("secondScreen"){ FilmScreen(navController) }
                        composable("thirdScreen"){ BookingScreen() }
 
 
