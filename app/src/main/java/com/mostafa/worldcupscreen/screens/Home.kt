@@ -29,6 +29,8 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import com.mostafa.worldcupscreen.FilmData
 import com.mostafa.worldcupscreen.R
 import com.mostafa.worldcupscreen.composable.Chip
@@ -40,7 +42,9 @@ import com.mostafa.worldcupscreen.ui.theme.Orange
 
 
 @Composable
-fun HomeScreen() {
+fun HomeScreen(
+    navController: NavController = rememberNavController()
+) {
 
     val filmList = listOf(
         FilmData(
@@ -107,7 +111,9 @@ fun HomeScreen() {
                 contentPadding = PaddingValues(horizontal = 16.dp)
             ) {
                 items(filmList) { dataFilm ->
-                    ImageItem(dataFilm = dataFilm)
+                    ImageItem(dataFilm = dataFilm) {
+                        navController.navigate(route = "secondScreen")
+                    }
                     Spacer(modifier = Modifier.width(24.dp))
 
                 }

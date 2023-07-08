@@ -184,10 +184,10 @@ fun Chip(text: String) {
 }
 
 @Composable
-fun ImageItem(dataFilm: FilmData) {
+fun ImageItem(dataFilm: FilmData,onClick: () -> Unit) {
     val painter: Painter = painterResource(id = dataFilm.image)
 
-    Column(Modifier.fillMaxHeight().fillMaxWidth(1f)) {
+    Column(Modifier.fillMaxHeight().fillMaxWidth(1f).clickable(onClick = onClick)) {
         Box(
             modifier = Modifier
                 .padding(4.dp)
