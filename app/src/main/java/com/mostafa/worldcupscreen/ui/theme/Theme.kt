@@ -29,7 +29,8 @@ private val LightColorPalette = lightColors(
 
 @Composable
 fun WorldCupScreenTheme(
-    darkTheme: Boolean = isSystemInDarkTheme(),
+//    darkTheme: Boolean = isSystemInDarkTheme(),
+    darkTheme: Boolean = false,
     content: @Composable () -> Unit
 ) {
     val colors = if (darkTheme) {

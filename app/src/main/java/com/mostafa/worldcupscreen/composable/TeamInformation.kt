@@ -191,7 +191,7 @@ fun ImageItem(dataFilm: FilmData) {
         Box(
             modifier = Modifier
                 .padding(4.dp)
-                .size(width = 240.dp, height = 380.dp)
+                .weight(fill = true, weight = 1f)
                 .clip(RoundedCornerShape(16.dp))
         ) {
             Image(
